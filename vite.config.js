@@ -17,8 +17,8 @@ export default defineConfig({
         background_color: '#060814',
         display: 'standalone',
         orientation: 'portrait',
-        scope: '/',
-        start_url: '/',
+        scope: '/projects/onepieceverse/',
+        start_url: '/projects/onepieceverse/',
         icons: [
           {
             src: '/icons/icon-192.png',
