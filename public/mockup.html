@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Piece Birthdays — UI Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #030712;
+      color: #f1f5f9;
+      padding: 40px 20px 80px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 48px;
+    }
+
+    /* ── Section labels ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #334155;
+      text-align: center;
+      margin-bottom: 24px;
+      margin-top: 64px;
+    }
+
+    /* ── Phone shell ── */
+    .phone {
+      width: 375px;
+      height: 720px;
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid #1e293b;
+      box-shadow: 0 0 0 1px #0f172a, 0 32px 80px rgba(0,0,0,0.8);
+      margin: 0 auto;
+    }
+
+    /* ══════════════════════════════════
+       SCREEN 1 — TODAY
+    ══════════════════════════════════ */
+
+    .today-screen {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: #060d1f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Night sky */
+    .sky {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, #0c1e4a 0%, #060d1f 60%);
+      overflow: hidden;
+    }
+
+    /* Stars */
+    .stars {
+      position: absolute;
+      inset: 0;
+    }
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle var(--d) ease-in-out infinite var(--delay);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: var(--max-op); }
+    }
+
+    /* Moon */
+    .moon {
+      position: absolute;
+      top: 28px;
+      right: 48px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fef9c3, #fde047);
+      box-shadow: 0 0 20px 6px rgba(253, 224, 71, 0.25), 0 0 60px 10px rgba(253, 224, 71, 0.1);
+    }
+
+    /* Ocean floor hint */
+    .ocean-hint {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to top, #0a1628 0%, transparent 100%);
+    }
+
+    /* App header */
+    .today-header {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      padding: 20px 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .today-header-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .today-header-date {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 500;
+    }
+
+    /* The sticker card */
+    .sticker-wrap {
+      position: relative;
+      z-index: 10;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sticker {
+      width: 280px;
+      background: linear-gradient(145deg, #111827 0%, #0f172a 50%, #0c1121 100%);
+      border-radius: 28px;
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      box-shadow:
+        0 0 0 1px rgba(251,191,36,0.1),
+        0 0 40px rgba(251,191,36,0.08),
+        0 24px 64px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+      overflow: hidden;
+    }
+
+    .sticker-top-bar {
+      background: linear-gradient(90deg, rgba(230,57,70,0.15), rgba(251,191,36,0.1));
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sticker-born-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #e63946;
+    }
+    .sticker-birthday {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .sticker-body {
+      padding: 24px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .sticker-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e63946, #9b1c28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: 900;
+      color: #fff;
+      border: 2px solid rgba(230,57,70,0.4);
+      box-shadow: 0 0 24px rgba(230,57,70,0.3), 0 8px 24px rgba(0,0,0,0.5);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .sticker-name {
+      font-size: 24px;
+      font-weight: 900;
+      color: #f1f5f9;
+      text-align: center;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .sticker-crew {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .sticker-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 16px;
+    }
+
+    .sticker-bounty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .sticker-bounty-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(251,191,36,0.5);
+      margin-bottom: 4px;
+    }
+    .sticker-bounty-value {
+      font-size: 26px;
+      font-weight: 900;
+      color: #fbbf24;
+      letter-spacing: -1px;
+    }
+
+    .sticker-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .sticker-pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.5);
+    }
+    .sticker-pill.fruit {
+      color: #a78bfa;
+      border-color: rgba(167,139,250,0.2);
+      background: rgba(167,139,250,0.05);
+    }
+
+    /* ══════════════════════════════════
+       SCREEN 2 — CALENDAR
+    ══════════════════════════════════ */
+
+    .calendar-screen {
+      width: 100%;
+      height: 100%;
+      background: #060d1f;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cal-sky {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% -10%, #0c1e4a 0%, #060d1f 55%);
+      pointer-events: none;
+    }
+
+    .cal-header {
+      position: relative;
+      z-index: 1;
+      padding: 20px 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cal-header-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .cal-month-nav {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px 12px;
+    }
+    .cal-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.6);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cal-month-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #f1f5f9;
+    }
+
+    .cal-day-headers {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      padding: 0 12px 6px;
+    }
+    .cal-day-header {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.5px;
+    }
+
+    .cal-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      padding: 0 12px;
+    }
+
+    .cal-cell {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      gap: 3px;
+    }
+    .cal-cell.today {
+      background: rgba(251,191,36,0.08);
+      border: 1px solid rgba(251,191,36,0.2);
+    }
+    .cal-cell.has-birthday {
+      cursor: pointer;
+    }
+    .cal-day-num {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+    }
+    .cal-cell.today .cal-day-num {
+      color: #fbbf24;
+      font-weight: 900;
+    }
+    .cal-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #e63946;
+    }
+
+    /* Selected day panel */
+    .cal-panel {
+      position: relative;
+      z-index: 1;
+      margin: 12px 12px 0;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .cal-panel-header {
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #e63946;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .cal-panel-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+    }
+    .cal-panel-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e63946, #9b1c28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .cal-panel-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+    .cal-panel-crew {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ══════════════════════════════════
+       SCREEN 3 — ALL CREW
+    ══════════════════════════════════ */
+
+    .crew-screen {
+      width: 100%;
+      height: 100%;
+      background: #060d1f;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .crew-sky {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 200px;
+      background: radial-gradient(ellipse at 50% -10%, #0c1e4a 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .crew-header {
+      position: relative;
+      z-index: 1;
+      padding: 20px 20px 16px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .crew-header-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #f1f5f9;
+      letter-spacing: -0.5px;
+    }
+    .crew-header-count {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 2px;
+    }
+
+    .crew-search {
+      position: relative;
+      z-index: 1;
+      margin: 0 16px 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .crew-search-icon { font-size: 14px; opacity: 0.4; }
+    .crew-search-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.25);
+      font-weight: 500;
+    }
+
+    .crew-filters {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 8px;
+      overflow: hidden;
+      padding: 0 16px 12px;
+    }
+    .crew-filter-pill {
+      flex-shrink: 0;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid;
+      white-space: nowrap;
+    }
+    .crew-filter-pill.active {
+      background: #e63946;
+      border-color: #e63946;
+      color: #fff;
+    }
+    .crew-filter-pill.inactive {
+      background: transparent;
+      border-color: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.4);
+    }
+
+    .crew-list {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      padding: 0 16px;
+      overflow: hidden;
+    }
+
+    .crew-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 14px;
+      margin-bottom: 6px;
+    }
+    .crew-row-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .crew-row-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+    .crew-row-crew {
+      font-size: 11px;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    .crew-row-right {
+      margin-left: auto;
+      text-align: right;
+    }
+    .crew-row-bounty {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fbbf24;
+    }
+    .crew-row-bday {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      margin-top: 2px;
+    }
+
+    /* ══════════════════════════════════
+       BOTTOM NAV (shared)
+    ══════════════════════════════════ */
+    .bottom-nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 72px;
+      background: rgba(6, 13, 31, 0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      z-index: 100;
+    }
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .nav-icon { font-size: 20px; }
+    .nav-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .nav-item.active .nav-label { color: #e63946; }
+    .nav-item.inactive .nav-label { color: rgba(255,255,255,0.25); }
+
+    /* ══════════════════════════════════
+       STARS JS
+    ══════════════════════════════════ */
+
+    /* Layout */
+    .screens-row {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .screen-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .screen-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #334155;
+    }
+
+    /* Color options */
+    .color-options {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+    .color-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .chip-swatch {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .chip-label {
+      font-size: 10px;
+      color: #475569;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>One Piece Birthdays · UI Mockup v1</h1>
+
+  <p class="section-label">All Three Screens</p>
+
+  <div class="screens-row">
+
+    <!-- ── TODAY ── -->
+    <div class="screen-wrap">
+      <div class="screen-title">Today</div>
+      <div class="phone">
+        <div class="today-screen">
+
+          <!-- Sky -->
+          <div class="sky" id="sky1">
+            <div class="moon"></div>
+          </div>
+
+          <!-- Header -->
+          <div class="today-header">
+            <span class="today-header-title">🏴‍☠️ Today</span>
+            <span class="today-header-date">April 14</span>
+          </div>
+
+          <!-- Sticker card -->
+          <div class="sticker-wrap">
+            <div class="sticker">
+              <div class="sticker-top-bar">
+                <span class="sticker-born-badge">🎂 Born Today</span>
+                <span class="sticker-birthday">April 14</span>
+              </div>
+              <div class="sticker-body">
+                <div class="sticker-avatar">HJ</div>
+                <div class="sticker-name">Hody Jones</div>
+                <div class="sticker-crew">New Fishmen Pirates</div>
+                <div class="sticker-divider"></div>
+                <div class="sticker-bounty">
+                  <div class="sticker-bounty-label">Bounty</div>
+                  <div class="sticker-bounty-value">฿ 4.0B</div>
+                </div>
+                <div class="sticker-pills">
+                  <span class="sticker-pill">30 yrs</span>
+                  <span class="sticker-pill">331cm</span>
+                  <span class="sticker-pill fruit">🍎 Uo Uo no Mi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ocean hint -->
+          <div class="ocean-hint"></div>
+
+          <!-- Bottom Nav -->
+          <div class="bottom-nav">
+            <div class="nav-item active">
+              <span class="nav-icon">🎂</span>
+              <span class="nav-label">Today</span>
+            </div>
+            <div class="nav-item inactive">
+              <span class="nav-icon">📅</span>
+              <span class="nav-label">Calendar</span>
+            </div>
+            <div class="nav-item inactive">
+              <span class="nav-icon">🏴‍☠️</span>
+              <span class="nav-label">All Crew</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CALENDAR ── -->
+    <div class="screen-wrap">
+      <div class="screen-title">Calendar</div>
+      <div class="phone">
+        <div class="calendar-screen">
+          <div class="cal-sky"></div>
+
+          <div class="cal-header">
+            <span class="cal-header-title">🏴‍☠️ Calendar</span>
+          </div>
+
+          <div class="cal-month-nav">
+            <div class="cal-arrow">‹</div>
+            <span class="cal-month-name">April 2026</span>
+            <div class="cal-arrow">›</div>
+          </div>
+
+          <div class="cal-day-headers">
+            <div class="cal-day-header">S</div>
+            <div class="cal-day-header">M</div>
+            <div class="cal-day-header">T</div>
+            <div class="cal-day-header">W</div>
+            <div class="cal-day-header">T</div>
+            <div class="cal-day-header">F</div>
+            <div class="cal-day-header">S</div>
+          </div>
+
+          <div class="cal-grid">
+            <!-- Row 1 (Apr starts Wed = index 3) -->
+            <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">1</span><span class="cal-dot"></span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">2</span><div style="display:flex;gap:2px"><span class="cal-dot"></span><span class="cal-dot"></span></div></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">3</span><span class="cal-dot"></span></div>
+            <div class="cal-cell"><span class="cal-day-num">4</span></div>
+            <!-- Row 2 -->
+            <div class="cal-cell"><span class="cal-day-num">5</span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">6</span><span class="cal-dot"></span></div>
+            <div class="cal-cell"><span class="cal-day-num">7</span></div>
+            <div class="cal-cell"><span class="cal-day-num">8</span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">9</span><span class="cal-dot"></span></div>
+            <div class="cal-cell"><span class="cal-day-num">10</span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">11</span><span class="cal-dot"></span></div>
+            <!-- Row 3 -->
+            <div class="cal-cell"><span class="cal-day-num">12</span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">13</span><span class="cal-dot"></span></div>
+            <div class="cal-cell today"><span class="cal-day-num">14</span><span class="cal-dot"></span></div>
+            <div class="cal-cell"><span class="cal-day-num">15</span></div>
+            <div class="cal-cell"><span class="cal-day-num">16</span></div>
+            <div class="cal-cell"><span class="cal-day-num">17</span></div>
+            <div class="cal-cell"><span class="cal-day-num">18</span></div>
+            <!-- Row 4 -->
+            <div class="cal-cell"><span class="cal-day-num">19</span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">20</span><span class="cal-dot"></span></div>
+            <div class="cal-cell"><span class="cal-day-num">21</span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">22</span><span class="cal-dot"></span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">23</span><span class="cal-dot"></span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">24</span><span class="cal-dot"></span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">25</span><span class="cal-dot"></span></div>
+            <!-- Row 5 -->
+            <div class="cal-cell has-birthday"><span class="cal-day-num">26</span><span class="cal-dot"></span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">27</span><span class="cal-dot"></span></div>
+            <div class="cal-cell"><span class="cal-day-num">28</span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">29</span><span class="cal-dot"></span></div>
+            <div class="cal-cell has-birthday"><span class="cal-day-num">30</span><span class="cal-dot"></span></div>
+          </div>
+
+          <!-- Tapped day panel -->
+          <div class="cal-panel">
+            <div class="cal-panel-header">🎂 April 14</div>
+            <div class="cal-panel-row">
+              <div class="cal-panel-avatar">HJ</div>
+              <div>
+                <div class="cal-panel-name">Hody Jones</div>
+                <div class="cal-panel-crew">New Fishmen Pirates</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-nav">
+            <div class="nav-item inactive"><span class="nav-icon">🎂</span><span class="nav-label">Today</span></div>
+            <div class="nav-item active"><span class="nav-icon">📅</span><span class="nav-label">Calendar</span></div>
+            <div class="nav-item inactive"><span class="nav-icon">🏴‍☠️</span><span class="nav-label">All Crew</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ALL CREW ── -->
+    <div class="screen-wrap">
+      <div class="screen-title">All Crew</div>
+      <div class="phone">
+        <div class="crew-screen">
+          <div class="crew-sky"></div>
+
+          <div class="crew-header">
+            <div>
+              <div class="crew-header-title">All Crew</div>
+            </div>
+            <div class="crew-header-count">232 members</div>
+          </div>
+
+          <div class="crew-search">
+            <span class="crew-search-icon">🔍</span>
+            <span class="crew-search-text">Search name, crew, devil fruit…</span>
+          </div>
+
+          <div class="crew-filters">
+            <div class="crew-filter-pill active">⚓ All</div>
+            <div class="crew-filter-pill inactive">Straw Hats</div>
+            <div class="crew-filter-pill inactive">Marines</div>
+            <div class="crew-filter-pill inactive">Whitebeard</div>
+          </div>
+
+          <div class="crew-list">
+            <div class="crew-row">
+              <div class="crew-row-avatar" style="background:linear-gradient(135deg,#e63946,#9b1c28)">A</div>
+              <div>
+                <div class="crew-row-name">Absalom</div>
+                <div class="crew-row-crew" style="color:#f4a261">Thriller Bark</div>
+              </div>
+              <div class="crew-row-right">
+                <div class="crew-row-bounty">฿ 0</div>
+                <div class="crew-row-bday">Dec 30</div>
+              </div>
+            </div>
+            <div class="crew-row">
+              <div class="crew-row-avatar" style="background:linear-gradient(135deg,#2a9d8f,#1a6b64)">A</div>
+              <div>
+                <div class="crew-row-name">Aisa</div>
+                <div class="crew-row-crew" style="color:#2a9d8f">Skypiea</div>
+              </div>
+              <div class="crew-row-right">
+                <div class="crew-row-bounty" style="color:rgba(255,255,255,0.2)">—</div>
+                <div class="crew-row-bday">Jan 3</div>
+              </div>
+            </div>
+            <div class="crew-row">
+              <div class="crew-row-avatar" style="background:linear-gradient(135deg,#9b5de5,#6d28d9)">A</div>
+              <div>
+                <div class="crew-row-name">Alvida</div>
+                <div class="crew-row-crew" style="color:#9b5de5">Baggy's Delivery</div>
+              </div>
+              <div class="crew-row-right">
+                <div class="crew-row-bounty">฿ 0</div>
+                <div class="crew-row-bday">Mar 14</div>
+              </div>
+            </div>
+            <div class="crew-row">
+              <div class="crew-row-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">A</div>
+              <div>
+                <div class="crew-row-name">Arlong</div>
+                <div class="crew-row-crew" style="color:#f59e0b">Arlong Pirates</div>
+              </div>
+              <div class="crew-row-right">
+                <div class="crew-row-bounty">฿ 20M</div>
+                <div class="crew-row-bday">May 3</div>
+              </div>
+            </div>
+            <div class="crew-row">
+              <div class="crew-row-avatar" style="background:linear-gradient(135deg,#06b6d4,#0e7490)">B</div>
+              <div>
+                <div class="crew-row-name">Bartholomew Kuma</div>
+                <div class="crew-row-crew" style="color:#06b6d4">Seven Warlords</div>
+              </div>
+              <div class="crew-row-right">
+                <div class="crew-row-bounty">฿ 296M</div>
+                <div class="crew-row-bday">Feb 9</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-nav">
+            <div class="nav-item inactive"><span class="nav-icon">🎂</span><span class="nav-label">Today</span></div>
+            <div class="nav-item inactive"><span class="nav-icon">📅</span><span class="nav-label">Calendar</span></div>
+            <div class="nav-item active"><span class="nav-icon">🏴‍☠️</span><span class="nav-label">All Crew</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Color palette reference -->
+  <p class="section-label" style="margin-top:64px">Color Palette</p>
+  <div class="color-options">
+    <div class="color-chip"><div class="chip-swatch" style="background:#060d1f"></div><div class="chip-label">#060d1f<br>BG</div></div>
+    <div class="color-chip"><div class="chip-swatch" style="background:#0c1e4a"></div><div class="chip-label">#0c1e4a<br>Sky glow</div></div>
+    <div class="color-chip"><div class="chip-swatch" style="background:#111827"></div><div class="chip-label">#111827<br>Card</div></div>
+    <div class="color-chip"><div class="chip-swatch" style="background:#e63946"></div><div class="chip-label">#e63946<br>Red</div></div>
+    <div class="color-chip"><div class="chip-swatch" style="background:#fbbf24"></div><div class="chip-label">#fbbf24<br>Gold</div></div>
+    <div class="color-chip"><div class="chip-swatch" style="background:#a78bfa"></div><div class="chip-label">#a78bfa<br>Devil fruit</div></div>
+    <div class="color-chip"><div class="chip-swatch" style="background:#f1f5f9"></div><div class="chip-label">#f1f5f9<br>Text</div></div>
+  </div>
+
+  <script>
+    // Scatter stars in the sky elements
+    ['sky1'].forEach(id => {
+      const sky = document.getElementById(id)
+      if (!sky) return
+      for (let i = 0; i < 80; i++) {
+        const s = document.createElement('div')
+        s.className = 'star'
+        const size = Math.random() * 2 + 1
+        const maxOp = (Math.random() * 0.5 + 0.3).toFixed(2)
+        s.style.cssText = `
+          width:${size}px; height:${size}px;
+          top:${Math.random() * 70}%;
+          left:${Math.random() * 100}%;
+          --d:${(Math.random() * 3 + 2).toFixed(1)}s;
+          --delay:-${(Math.random() * 4).toFixed(1)}s;
+          --max-op:${maxOp};
+        `
+        sky.appendChild(s)
+      }
+    })
+  </script>
+</body>
+</html>
