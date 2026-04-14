@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: '/projects/onepieceverse/',
   plugins: [
     react(),
     VitePWA({
@@ -17,8 +16,8 @@ export default defineConfig({
         background_color: '#060814',
         display: 'standalone',
         orientation: 'portrait',
-        scope: '/projects/onepieceverse/',
-        start_url: '/projects/onepieceverse/',
+        scope: '/',
+        start_url: '/',
         icons: [
           {
             src: '/icons/icon-192.png',
