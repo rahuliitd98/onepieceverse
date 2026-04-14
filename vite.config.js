@@ -9,8 +9,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'icons/*.png'],
       manifest: {
-        name: 'One Piece Birthdays',
-        short_name: 'OP Birthdays',
+        name: 'OP Verse',
+        short_name: 'OP Verse',
         description: 'Daily One Piece character birthdays',
         theme_color: '#060814',
         background_color: '#060814',
